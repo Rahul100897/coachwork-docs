@@ -96,3 +96,7 @@ form.support button {
 }
 
 footer.site { border-top: 1px solid var(--border); padding: 24px 16px; color: var(--muted); font-size: 0.875rem; }
+
+.support-form { max-width: 680px; margin-top: 24px; }
+.support-form iframe { display: block; width: 100%; border: 0; }
+.hint-line { color: var(--muted); font-size: 0.875rem; }
