@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coachwork theme documentation</title>
+  <meta name="description" content="Set up the Coachwork Shopify theme: presets, vehicle finder and My Garage, Anatomy of fit, home page sections, product pages, and answers to common questions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=IBM+Plex+Mono&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site">
+  <div class="inner">
+    <a class="brand" href="./">Coachwork</a>
+    <nav class="top" aria-label="Main">
+      <a href="./" aria-current="page">Documentation</a>
+      <a href="#faq">FAQ</a>
+      <a href="support.html">Support</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+  <p class="eyebrow">Theme documentation</p>
+  <h1>Coachwork</h1>
+  <p class="lede">A Shopify theme for car and performance parts stores. Shoppers choose their vehicle once and see only the parts that fit, with no app needed. This guide covers everything from installing the theme to setting up fitment data.</p>
+
+  <div class="layout">
+    <aside class="toc" aria-label="On this page">
+      <ol>
+        <li><a href="#getting-started">Getting started</a></li>
+        <li><a href="#presets">Presets</a></li>
+        <li><a href="#fitment">Fitment data</a></li>
+        <li><a href="#vehicle-finder">Vehicle finder and My Garage</a></li>
+        <li><a href="#anatomy">Anatomy of fit</a></li>
+        <li><a href="#home">Home page sections</a></li>
+        <li><a href="#header-footer">Header and footer</a></li>
+        <li><a href="#product">Product pages</a></li>
+        <li><a href="#collection">Collections and search</a></li>
+        <li><a href="#cart">Cart</a></li>
+        <li><a href="#settings">Theme settings</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#support">Support policy</a></li>
+      </ol>
+    </aside>
+
+    <div>
+      <h2 id="getting-started">Getting started</h2>
+      <ol>
+        <li>In your Shopify admin, go to <strong>Online Store → Themes</strong>, find Coachwork in the Theme Store and click <strong>Try theme</strong> or <strong>Add to theme library</strong>.</li>
+        <li>Pick a preset: <strong>Coachwork</strong> (dark) or <strong>Alabaster</strong> (light). You can switch later under <strong>Theme settings → Colors</strong>.</li>
+        <li>Click <strong>Customize</strong> to open the theme editor. Every section shows finished-looking placeholder content until you add your own images, products and collections.</li>
+        <li>Add vehicle tags to your products (see <a href="#fitment">Fitment data</a>) so the vehicle finder has something to search.</li>
+        <li>Preview the store, then click <strong>Publish</strong>.</li>
+      </ol>
+      <div class="note">Demo store images don't transfer when you install a theme. Sections show placeholders until you choose your own images in the theme editor.</div>
+
+      <h2 id="presets">Presets</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Preset</th><th>Look</th><th>Demo store</th></tr></thead>
+        <tbody>
+          <tr><td>Coachwork</td><td>Near-black background, champagne accent, Bodoni Moda headings.</td><td><a href="https://fcoachwork-obsidian-demo.myshopify.com">View demo</a></td></tr>
+          <tr><td>Alabaster</td><td>Warm cream background, bronze accent, Cormorant headings.</td><td><a href="https://coachwork-alabaster-demo.myshopify.com">View demo</a></td></tr>
+        </tbody>
+      </table></div>
+      <p>Both presets share the same sections and features. Colors and fonts live in <strong>Theme settings</strong>, so you can start from either preset and adjust it.</p>
+
+      <h2 id="fitment">Fitment data</h2>
+      <p>Coachwork reads vehicle fitment from product tags. Add one tag per vehicle a product fits, in this format:</p>
+      <pre><code>ymm:YEAR|make|model</code></pre>
+      <p>For example, a brake kit that fits two cars gets two tags:</p>
+      <pre><code>ymm:2024|aurelia|grand-tourer
+ymm:2023|aurelia|saloon</code></pre>
+      <ul>
+        <li>Write the make and model in lowercase, with hyphens instead of spaces. The theme shows them capitalized: <code>grand-tourer</code> appears as "Grand Tourer".</li>
+        <li>Add tags in <strong>Products → [product] → Tags</strong>, or in bulk with a product CSV import (the <code>Tags</code> column, comma-separated).</li>
+        <li>Products without <code>ymm:</code> tags are treated as universal: they don't show a fit badge and the fitment check stays hidden.</li>
+      </ul>
+      <div class="note">The vehicle finder reads up to 1,000 tags across your store (a Shopify limit on store-wide tags). For very large catalogs, add a fitment app: the product page and collection grid have app blocks where a fitment app can take over.</div>
+
+      <h2 id="vehicle-finder">Vehicle finder and My Garage</h2>
+      <p>The vehicle finder is a block in the <strong>Slideshow</strong> section. It lists every year found in your <code>ymm:</code> tags, then the makes for that year, then the models.</p>
+      <ul>
+        <li><strong>Find parts</strong> opens the collection filtered to that exact vehicle, for example <code>/collections/all/ymm-2024-aurelia-grand-tourer</code>. Choose which collection in the block's <strong>Collection</strong> setting.</li>
+        <li><strong>Save to My Garage</strong> stores the vehicle in the shopper's browser (up to 5 vehicles). No account or app is needed.</li>
+        <li>With a saved vehicle, product cards show a fit badge, product pages confirm the fit, and the featured collection heading names the vehicle.</li>
+        <li>Shoppers open <strong>My Garage</strong> from the header to switch vehicles, shop for one or remove it.</li>
+      </ul>
+
+      <h2 id="anatomy">Anatomy of fit</h2>
+      <p>A large photo with numbered points, each linked to a product. Shoppers select a point to see the part, its part number and price.</p>
+      <ol>
+        <li>Add the <strong>Anatomy of fit</strong> section and choose an image, ideally a car photographed side-on or close up.</li>
+        <li>Add up to 8 <strong>Hotspot</strong> blocks. For each one choose a product, a label (for example "Headlight") and a zone (for example "Lighting").</li>
+        <li>Set the <strong>horizontal</strong> and <strong>vertical</strong> position as a percentage of the image. 0, 0 is the top-left corner.</li>
+      </ol>
+      <p>Points are buttons, so they work with the keyboard and screen readers. The list under the image gives the same parts in text.</p>
+
+      <h2 id="home">Home page sections</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Section</th><th>Use it for</th></tr></thead>
+        <tbody>
+          <tr><td>Slideshow</td><td>Up to 8 slides with a separate mobile image, plus the vehicle finder.</td></tr>
+          <tr><td>Collection list</td><td>Up to 12 departments as image tiles.</td></tr>
+          <tr><td>Anatomy of fit</td><td>Products pinned to a photo (see above).</td></tr>
+          <tr><td>Featured collection</td><td>A product grid that follows the shopper's saved vehicle.</td></tr>
+          <tr><td>Image with text</td><td>A story or guide with an image and a link.</td></tr>
+          <tr><td>Brand index</td><td>Up to 12 brands in a list, with a preview image and model links for each.</td></tr>
+          <tr><td>Trust strip</td><td>Up to 6 promises, such as fitment guarantee and shipping.</td></tr>
+          <tr><td>Rich text, Multicolumn, Testimonials, Logo list, Video, Collapsible content, Featured product, Email signup</td><td>General content sections.</td></tr>
+          <tr><td>Custom Liquid, Custom section</td><td>Your own code or app blocks.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="header-footer">Header and footer</h2>
+      <ul>
+        <li><strong>Logo:</strong> upload it under <strong>Theme settings → Logo and favicon</strong> and set its width. Without a logo, the store name is shown in the heading font.</li>
+        <li><strong>Menus:</strong> the header shows up to three menu levels. Top-level items with child links open a mega menu panel, with the second level as columns. Add a <strong>Mega menu promo</strong> block for an image card in the panel.</li>
+        <li><strong>Announcement bar:</strong> add messages as blocks; they scroll and can be paused.</li>
+        <li><strong>Footer:</strong> add Email signup, Menu, Store information and Social media icons blocks. The payment icons and Shopify credit are added automatically.</li>
+        <li><strong>Country and language selectors</strong> appear when you sell in more than one market or language.</li>
+      </ul>
+
+      <h2 id="product">Product pages</h2>
+      <p>Every element on the product page is a block you can reorder or remove: vendor, title, part number (the variant SKU), price, inventory status, variant picker, quantity, buy buttons, Shop Pay Installments, purchase options, pickup availability, fitment check, description, collapsible tabs, complementary products, share and Custom Liquid.</p>
+      <ul>
+        <li><strong>Fitment check</strong> confirms whether the part fits the shopper's saved vehicle and lists every compatible vehicle from the product's tags.</li>
+        <li><strong>Swatches:</strong> add swatches to your product options in the admin and the variant picker shows them automatically.</li>
+        <li><strong>Media:</strong> images, videos, YouTube or Vimeo, and 3D models with AR, with a full-screen zoom.</li>
+      </ul>
+
+      <h2 id="collection">Collections and search</h2>
+      <ul>
+        <li>Filters come from <strong>Search &amp; Discovery</strong> in your admin. The theme shows them in a sidebar on desktop and a drawer on mobile, including price range and color swatches.</li>
+        <li>Shoppers can sort and switch between grid and list view. Filters update the page without a reload.</li>
+        <li>Predictive search suggests products, collections and pages as shoppers type.</li>
+      </ul>
+
+      <h2 id="cart">Cart</h2>
+      <p>Choose a <strong>drawer</strong> or <strong>page</strong> cart under <strong>Theme settings → Cart</strong>. The cart supports discount codes, order notes, unit prices, subscriptions and accelerated checkout buttons.</p>
+
+      <h2 id="settings">Theme settings</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Group</th><th>What it controls</th></tr></thead>
+        <tbody>
+          <tr><td>Logo and favicon</td><td>Logo image and width, favicon.</td></tr>
+          <tr><td>Colors</td><td>Color schemes. Each scheme pairs a background with text, accent, border and button colors.</td></tr>
+          <tr><td>Typography</td><td>Heading, body and monospace (part numbers) fonts from Shopify's font library, and text sizes.</td></tr>
+          <tr><td>Layout</td><td>Page width, side margins and spacing between sections.</td></tr>
+          <tr><td>Buttons</td><td>Corner radius, border width and text case.</td></tr>
+          <tr><td>Cards and inputs</td><td>Corner radius.</td></tr>
+          <tr><td>Cart</td><td>Cart drawer or cart page.</td></tr>
+          <tr><td>Social media</td><td>Links shown in the footer.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="faq">FAQ</h2>
+      <details>
+        <summary>Do I need an app for the vehicle finder?</summary>
+        <p>No. The finder, My Garage, fit badges and the fitment check all read your products' <code>ymm:</code> tags. For catalogs with more than 1,000 vehicle tags, a fitment app can plug into the theme's app blocks.</p>
+      </details>
+      <details>
+        <summary>Why doesn't a year, make or model appear in the finder?</summary>
+        <ul>
+          <li>Check the tag format: <code>ymm:2024|aurelia|grand-tourer</code>, with no spaces.</li>
+          <li>The product must be active and available on the Online Store.</li>
+          <li>The finder reads the first 1,000 tags in your store. If you have more, remove unused tags or use a fitment app.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Where is a shopper's garage saved?</summary>
+        <p>In their browser. It stays on that device and isn't linked to a customer account, so no personal data is stored.</p>
+      </details>
+      <details>
+        <summary>Why do my sections show placeholder images after installing?</summary>
+        <p>Demo store images don't transfer with the theme. Choose your own images in each section in the theme editor.</p>
+      </details>
+      <details>
+        <summary>How do I change the hotspot positions in Anatomy of fit?</summary>
+        <p>Open the hotspot block and change its horizontal and vertical position, as percentages of the image. The editor preview updates as you move the sliders.</p>
+      </details>
+      <details>
+        <summary>Can I use Coachwork for motorcycle parts or other vehicles?</summary>
+        <p>Yes. The tags work for any vehicle with a year, make and model. Change the copy and images to suit your store.</p>
+      </details>
+      <details>
+        <summary>How do I show a different hero image on phones?</summary>
+        <p>Each slide has a <strong>Mobile image</strong> setting. Phones download only the mobile image.</p>
+      </details>
+      <details>
+        <summary>Does the theme support multiple languages and currencies?</summary>
+        <p>Yes. Add languages and markets in your admin, and the header shows language and country selectors.</p>
+      </details>
+      <details>
+        <summary>How do I update to a new version?</summary>
+        <p>When an update is available, Shopify shows it in <strong>Online Store → Themes</strong>. Updating creates a copy with your settings carried over. See the <a href="changelog.html">changelog</a> for what changed.</p>
+      </details>
+
+      <h2 id="support">Support policy</h2>
+      <ul>
+        <li>Use the <a href="support.html">support form</a>. We reply within two business days, Monday to Friday.</li>
+        <li>Support covers setting up and using the theme's own features, and bugs in the theme's code.</li>
+        <li>It doesn't cover changes to the theme's code, third-party apps, or design work beyond the theme's settings.</li>
+        <li>Include your store URL and, if you can, a screenshot. It helps us answer in one reply.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="inner">Coachwork theme by Storelivo · <a href="support.html">Contact support</a></div>
+</footer>
+</body>
+</html>
